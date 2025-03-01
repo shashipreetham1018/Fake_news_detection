@@ -1,4 +1,3 @@
-#user.name=shashipreetham1018
 from flask import Flask, request, render_template
 import joblib
 import os
@@ -28,4 +27,6 @@ def predict():
     return render_template('prediction.html', news_text=data, prediction=result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Render provides a PORT variable
+    app.run(host="0.0.0.0", port=port, debug=True)  # Use 0.0.0.0 for public access
+
